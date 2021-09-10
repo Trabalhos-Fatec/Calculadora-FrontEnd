@@ -8,8 +8,8 @@
 
 ## indice do documento
 
- 1. [Como baixar o projeto?](#build)
- 2.[Entrega Parcial 1](#send1) <br>
+ 1. [Como baixar o projeto?](#build) <br>
+ 2. [Entregas (Video)](#send1) <br>
  3. [Autoras](#author)
  4. [Orientador](#teacher)
 
