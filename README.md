@@ -1,4 +1,8 @@
-# Calculadora Laboratório de Engenharia de Software
+<p align="center">
+  
+<img src="https://github.com/Trabalhos-Fatec/Calculadora-FrontEnd/blob/main/Repository%20Images/Calculadora-Banner.png" alt="capa do repositorio">
+  
+</p>
 
 ### Como rodar
 
