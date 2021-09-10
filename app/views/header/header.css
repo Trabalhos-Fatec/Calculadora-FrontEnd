@@ -1,0 +1,55 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body, html{
+    height: 100%;
+    width: 100%;
+}
+
+
+nav {
+    width: 100%;
+    background-color: #38EA9F;
+}
+
+#calc{
+    color: #ffff;
+}
+
+.nav-bar{
+    display: inline;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 5px 0px 5px;
+}
+
+ul{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+}
+
+li{
+    padding: 10px;
+}
+
+#opcoes-menu{
+    display: flex;
+    margin-right: 20px;   
+}
+
+.op-menu{
+    padding: 20px;
+    list-style: none;
+    text-decoration:none;
+}
+
+.sub-op{
+    text-decoration:none;
+    color: white;
+}
