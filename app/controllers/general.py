@@ -18,3 +18,7 @@ def sobre():
 @bp.route('/hist')
 def historico():
     return render_template('historico/historico.html', title='Calculadora - Histórico')
+
+@bp.route('/log')
+def log():
+    return render_template('log/log.html', title='Calculadora - Log')
