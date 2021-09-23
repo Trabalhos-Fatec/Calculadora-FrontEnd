@@ -5,18 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=>, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='header/header.css') }}">
+    <script src="https://kit.fontawesome.com/755d87e44b.js" crossorigin="anonymous"></script>
+    
     <title>Document</title>
 </head>
 <body>
     <header>
     <nav class="nav-bar">
         <div class="titulo">
-        <h1><a href="/home" class="sub-op">Calculadora</a></h1>
+        <h1><a href="/home" class="sub-op"> 
+            <i class="fas fa-calculator"></i>
+            Calculadora
+        </a></h1>
         </div>
         <ul>
             <li class="op-menu"> <a href="/home" class="sub-op">Home</a></li>
-            <li class="op-menu"> <a href="/sobre" class="sub-op"> Sobre</a></li>
             <li class="op-menu"> <a href="/hist" class="sub-op">Histórico</a></li>
+            <li class="op-menu"> <a href="/sobre" class="sub-op"> Sobre</a></li>
         </ul>
 
     </nav>

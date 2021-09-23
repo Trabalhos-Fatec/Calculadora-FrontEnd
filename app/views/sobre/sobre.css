@@ -1,5 +1,45 @@
-* {
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-  }
   
+  .box-funcao{
+    background-color: grey;
+    color: white;
+    width: 75%;
+    padding: 5px;
+
+    font-size: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p{
+  align-content: center;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 10px;
+}
+
+.fab{
+  font-size: 25px;
+  margin: 5px;
+  color: rgb(78, 74, 74)
+}
+
+.fa-github:hover{
+cursor:pointer;
+color: rgb(33, 177, 117);
+}
+
+.fa-linkedin:hover{
+  cursor:pointer;
+  color: rgb(33, 177, 117);
+  }

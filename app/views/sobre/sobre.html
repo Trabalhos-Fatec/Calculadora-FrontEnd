@@ -4,25 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=>, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='sobre/sobre.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='header/base.css') }}">
     <title>{{ title }}</title>
 </head>
 <body>
     {% include 'header/header.html' %}
 
-    <h1>Sobre</h1>
+    <div class="container-titulo">
+        <p>A Calculadora</p>
+      </div>
 
-    <p>
-        Este é um projeto da disciplina de Engenharia de Software do 6º Semestre de 2021 da Fatec de São José dos Campos,
-         sendo o Orientador da disciplina o professor Fabrício Galende Marques de Carvalho.
-    </p>
-    <p>
-        A Calculadora tem o propósito de realizar um cálculo com operações elementares, envolvendo funções transcendentes.
-    </p>
-    <p>
-        Cosseno de X
-       
-    </p>
 
-    <img src="../../static/images/cosseno.PNG" alt="imagem da formula do cosseno">
+        <section class="description">
+            <p>
+                Este é um projeto da disciplina de Engenharia de Software do 6º Semestre de 2021 da Fatec de São José dos Campos,
+                 sendo o Orientador da disciplina o professor Fabrício Galende Marques de Carvalho.
+            </p>
+        
+            <p>
+                A Calculadora tem o propósito de realizar um cálculo com operações elementares, envolvendo funções transcendentes.
+            </p>
+    
+            <p>
+                Cosseno de X somado com a Cossecante de X.
+                √a²+b² - 2ab cos(y)
+            </p>
+        </section>
+    
+    <div class="container">
+        <p class="box-funcao">
+            Função f(x) = cosec(x) + cos(x)
+        </p>
+
+    </div>
+
+    <section class="developers">
+        <p>
+            Desenvolvida por:
+        </p>
+        
+        <p>
+            Bruna Larissa Clemente Gomes 
+            <a href="https://github.com/littlebru"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/bru-gomes/"><i class="fab fa-linkedin"></i></a>
+        </p>
+        <p> 
+            Nayara Lorrane Santos Oliveira 
+            <a href="https://github.com/nayaralorrane"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/nayara-lorrane-765400157/"><i class="fab fa-linkedin"></i></a>
+        </p>
+    </section>
+    
 </body>
 </html>

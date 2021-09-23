@@ -6,34 +6,55 @@
         <title>{{ title }}</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home/home.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='header/base.css') }}">
     </head>
     <body>
         {% include 'header/header.html' %}
-        <h1>Home Calculadora 🎉</h1>
+        
+        <div class="container-titulo">
+          <p>Home</p>
+        </div>
 
-        <!-- <div class="container">
-            <div class="calc-body">
-              <div class="calc-screen">
-              </div> -->
-              <div class="buttons-row">
+        <div class="container">
+          <div class="calc-body">
+
+            <div class="calc-screen">
+              <input type="text" id="fname" name="valor" placeholder="f(x)= cosec(x) + cos(x)">
+            </div>
+
+            <div class="container-botoes">
+              <div class="calc-button-row">
                 <div class="button">7</div>
                 <div class="button">8</div>
                 <div class="button">9</div>
+                <div class="button l eq">
+                  <i class="fas fa-star icon"></i>
+                  <spam class="func-especial">Especial</spam>
+                  <i class="fas fa-star icon"></i>
+                </div>
               </div>
-              <div class="buttons-row">
+              <div class="calc-button-row">
                 <div class="button">4</div>
                 <div class="button">5</div>
                 <div class="button">6</div>
+                <div class="button l">−</div>
               </div>
-              <div class="buttons-row">
+              <div class="calc-button-row">
                 <div class="button">1</div>
                 <div class="button">2</div>
                 <div class="button">3</div>
+                <div class="button l">+</div>
               </div>
-              <div class="buttons-row">
-                <div class="button">.</div>
+              <div class="calc-button-row">
+                <div class="button l">.</div>
                 <div class="button">0</div>
-                <div class="button" id="result">=</div>
-            </div>
+                <div class="button l">C</div>
+                <div class="button l">=</div>
+              </div>
+            </div>    
+
+        </div>
+        </div>
+        
     </body>
 </html>

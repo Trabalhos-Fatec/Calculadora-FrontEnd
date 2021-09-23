@@ -5,13 +5,32 @@
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <title>{{ title }}</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='historico/historico.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='header/base.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='header/header.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='historico/historico.css') }}">
     </head>
-    <body>
-        {% include 'header/header.html' %}
-
+	<body>
+		{% include 'header/header.html' %}
+		
+		<div class="titleHistorico">
+			<caption>Histórico de Operações</caption>
+		</div>
+		<div class="filtros">
+			<div class="filtroData">
+				<p>Data</p>
+				<input id="data" placeholder="Clique aqui" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" ></input>
+			</div>
+			<div class="filtroOperacao">
+				<p>Tipo de Operação</p>
+				<select id="tipoOp" name="select">
+					<option value="selecione" selected>Selecione</option>
+					<option value="soma">Soma</option>
+					<option value="subtracao">Subtração</option>
+					<option value="divisao">Divisão</option>
+				  </select>
+			</div>
+		</div>
         <table>
-			<caption>Histórico</caption>
 			<thead>
 			  <tr>
 				<th scope="col">Espressão</th>
