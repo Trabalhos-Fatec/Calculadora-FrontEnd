@@ -57,6 +57,30 @@ $ venv/bin/pip3 install -r requirements.txt
 $ python3 main.py
 ```
 
+-------------------------------------------------------
+
+### Configuração do banco de dados
+
+Criação das tabelas no banco de dados
+
+```
+#banco de dados utilizado
+use NomeDoBanco;
+
+create table historico (
+id_historico int primary key,
+dt_registro date not null,
+argumentos varchar(20) not null,
+resultado decimal(5,2) not null,
+id_operacao int not null references operacao (id_operacao)
+);
+
+create table operacao (
+id_operacao int not null primary key,
+tipo_operacao varchar(30) not null,
+operacao_especifica varchar(5) not null
+);
+```
   --------------------------
  
  ## Entregas
