@@ -91,7 +91,7 @@ operacao_especifica varchar(5) not null
 |:----------:|:----------:|:-------------:|
  Entrega 1 | <a href="https://youtu.be/LmJKxIrqFBw" target="_blank"><img src="https://github.com/Trabalhos-Fatec/Calculadora-FrontEnd/blob/main/Repository%20Images/Capa-video1.png"  width="70%" title="Entrega 1"/></a> |  Neste vídeo eu estarei te passando as etapas para baixar este projeto, buildar e subir a aplicação para um servidor local.|
  Entrega 2| <a href="" target="_blank"><img src="https://github.com/Trabalhos-Fatec/Calculadora-FrontEnd/blob/main/Repository%20Images/Capa-video2.png"  width="70%" title="Entrega 2"/></a> |    Neste vídeo eu estarei te passando as etapas para baixar os serviços nos repositórios do projeto, rodar todos os serviços e demonstrar a interação entre eles com o armazenamento das informações no banco de dados.   |
- Entrega 3| <a href="https://www.youtube.com/watch?v=qsWQxMBulh0" target="_blank">  width="70%" title="Entrega 3"/></a> |    Neste vídeo eu estarei te passando a demonstração da integração contínua com a falha na instalação das dependências e falha no teste unitário.   |
+ Entrega 3| <a href="https://www.youtube.com/watch?v=qsWQxMBulh0" target="_blank">  </a> |    Neste vídeo eu estarei te passando a demonstração da integração contínua com a falha na instalação das dependências e falha no teste unitário.   |
 
 
   --------------------------
