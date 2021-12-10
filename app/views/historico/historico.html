@@ -8,10 +8,11 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='header/base.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='header/header.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='historico/historico.css') }}">
+        <script src="{{ url_for('static', filename='historico/historico.js') }}" charset="utf-8"></script>
     </head>
 	<body>
 		{% include 'header/header.html' %}
-		
+
 		<div class="titleHistorico">
 			<caption>Histórico de Operações</caption>
 		</div>
@@ -23,11 +24,7 @@
 			<div class="filtroOperacao">
 				<p>Tipo de Operação</p>
 				<select id="tipoOp" name="select">
-					<option value="selecione" selected>Selecione</option>
-					<option value="soma">Soma</option>
-					<option value="subtracao">Subtração</option>
-					<option value="divisao">Divisão</option>
-				  </select>
+				</select>
 			</div>
 		</div>
         <table>
@@ -38,28 +35,43 @@
 				<th scope="col">Resultado</th>
 			  </tr>
 			</thead>
-			<tbody>
-			  <tr>
-				<td data-label="Account">cossec(2)+cos(2)</td>
-				<td data-label="Due Date">04/01/2016</td>
-				<td data-label="Period">0.68360</td>
-			  </tr>
-			  <tr>
-				<td scope="row" data-label="Account">cossec(4)+cos(4)</td>
-				<td data-label="Due Date">03/01/2016</td>
-				<td data-label="Period">-1.97499</td>
-			  </tr>
-			  <tr>
-				<td scope="row" data-label="Account">cossec(10)+cos(10)</td>
-				<td data-label="Due Date">03/01/2016</td>
-				<td data-label="Period">6.74357</td>
-			  </tr>
-			  <tr>
-				<td scope="row" data-label="Acount">2+2</td>
-				<td data-label="Due Date">02/01/2016</td>
-				<td data-label="Period">4</td>
-			  </tr>
+			<tbody id='bodyHistorico'>
 			</tbody>
 		  </table>
     </body>
 </html>
+<script type="text/javascript">
+    window.onload = () => {
+        getListOperacao();
+        getHistorico();
+    }
+
+    function getListOperacao() {
+        let url = 'http://localhost:5003/api_gateway/getOperacao';
+        axios.get(url).then(response => {
+            let listOptions = ['<option value="selecione" selected>Selecione</option>'];
+            response.data.list.forEach(elem => {
+                listOptions.push(`<option value="${elem.id_operacao}">${elem.operacao_especifica[0].toUpperCase() + elem.operacao_especifica.substr(1)}</option>`)
+            });
+
+            document.getElementById('tipoOp').innerHTML = listOptions;
+        }).catch((err) => err)
+    }
+
+    function getHistorico() {
+        let url = 'http://localhost:5003/api_gateway/getHistorico';
+        axios.get(url).then(response => {
+            let listOptions = new Array();
+            response.data.results.forEach(elem => {
+                listOptions.push(`<tr>
+  				<td data-label="Account">${elem.argumento}</td>
+  				<td data-label="Due Date">${elem.dt_registro}</td>
+  				<td data-label="Period">${elem.resultado}</td>
+  			    </tr>`)
+            });
+
+            document.getElementById('bodyHistorico').innerHTML = listOptions;
+        }).catch((err) => err)
+    }
+
+</script>

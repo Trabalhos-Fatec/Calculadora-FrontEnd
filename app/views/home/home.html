@@ -1,60 +1,152 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset='utf-8'>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>{{ title }}</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home/home.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='header/base.css') }}">
-    </head>
-    <body>
-        {% include 'header/header.html' %}
-        
-        <div class="container-titulo">
-          <p>Home</p>
-        </div>
+	<head>
+			<meta charset='utf-8'>
+			<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+			<title>{{ title }}</title>
+			<meta name='viewport' content='width=device-width, initial-scale=1'>
+			<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home/home.css') }}">
+			<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='header/base.css') }}">
+	</head>
+	<body>
+		{% include 'header/header.html' %}
 
-        <div class="container">
-          <div class="calc-body">
+		<div class="container-titulo">
+			<p>Home</p>
+		</div>
 
-            <div class="calc-screen">
-              <input type="text" id="fname" name="valor" placeholder="f(x)= cosec(x) + cos(x)">
-            </div>
+		<div class="container">
+			<div class="calc-body">
+				<div class="calc-screen">
+					<input type="text" id="fname" name="valor" placeholder="f(x)= cosec(x) + cos(x)">
+				</div>
 
-            <div class="container-botoes">
-              <div class="calc-button-row">
-                <div class="button">7</div>
-                <div class="button">8</div>
-                <div class="button">9</div>
-                <div class="button l eq">
-                  <i class="fas fa-star icon"></i>
-                  <spam class="func-especial">Especial</spam>
-                  <i class="fas fa-star icon"></i>
-                </div>
-              </div>
-              <div class="calc-button-row">
-                <div class="button">4</div>
-                <div class="button">5</div>
-                <div class="button">6</div>
-                <div class="button l">−</div>
-              </div>
-              <div class="calc-button-row">
-                <div class="button">1</div>
-                <div class="button">2</div>
-                <div class="button">3</div>
-                <div class="button l">+</div>
-              </div>
-              <div class="calc-button-row">
-                <div class="button l">.</div>
-                <div class="button">0</div>
-                <div class="button l">C</div>
-                <div class="button l">=</div>
-              </div>
-            </div>    
-
-        </div>
-        </div>
-        
-    </body>
+				<div class="container-botoes">
+					<div class="calc-button-row">
+						<div class="button" onclick="setValueConta(7)">7</div>
+						<div class="button" onclick="setValueConta(8)">8</div>
+						<div class="button" onclick="setValueConta(9)">9</div>
+						<div class="button l eq" onclick="setSpecialMode()">
+							<i class="fas fa-star icon"></i>
+							<spam class="func-especial">Especial</spam>
+							<i class="fas fa-star icon"></i>
+						</div>
+					</div>
+					<div class="calc-button-row">
+						<div class="button" onclick="setValueConta(4)">4</div>
+						<div class="button" onclick="setValueConta(5)">5</div>
+						<div class="button" onclick="setValueConta(6)">6</div>
+						<div class="button l" onclick="setValueConta('-')">−</div>
+					</div>
+					<div class="calc-button-row">
+						<div class="button" onclick="setValueConta(1)">1</div>
+						<div class="button" onclick="setValueConta(2)">2</div>
+						<div class="button" onclick="setValueConta(3)">3</div>
+						<div class="button l" onclick="setValueConta('+')">+</div>
+					</div>
+					<div class="calc-button-row">
+						<div class="button l">.</div>
+						<div class="button" onclick="setValueConta(0)">0</div>
+						<div class="button l" onclick="cleanAllData()">C</div>
+						<div class="button l" onclick="saveData()">=</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
+<script type="text/javascript">
+	var conta = '';
+	var specialMode = false;
+	var xValue = null;
+
+	function setValueConta(value) {
+		if (specialMode) {
+			conta = `f(x)= cosec(${value}) + cos(${value})`;
+			xValue = value; 
+		}
+		else if (['+', '-'].includes(value)) {
+			conta += ` ${value} `;
+		} else {
+			conta += `${value}`;
+		}
+		
+		document.getElementById('fname').value = conta;
+	}
+
+	function cleanAllData() {
+		specialMode = false;
+		conta = ''
+		setValueConta(conta);
+		xValue = null;
+	}
+
+	function setSpecialMode() {
+		cleanAllData();
+		setValueConta("f(x)= cosec(x) + cos(x)");
+		specialMode = true;
+	}
+
+	async function postSoma(dataSoma) {
+		let urlSoma = 'http://localhost:5003/api_gateway/soma';
+		let resultToReturn;
+		await axios.post(urlSoma, { 'data': dataSoma }).then(responseSoma => resultToReturn =  responseSoma.data.resultado);
+		return resultToReturn;
+	}
+
+	async function postSubtracao(dataSubtracao) {
+		let urlSubtracao = 'http://localhost:5003/api_gateway/subtracao';
+		let resultToReturn;
+		await axios.post(urlSubtracao, { 'data': dataSubtracao }).then(responseSub => resultToReturn = responseSub.data.resultado);
+		return resultToReturn;
+	}
+
+	async function postCos(dataCos) {
+		let urlCos = 'http://localhost:5003/api_gateway/cosseno';
+		let resultToReturn;
+		await axios.post(urlCos, { 'data': dataCos }).then(responseCos => resultToReturn = responseCos.data.resultado);
+		return resultToReturn;
+	}
+
+	async function postCosT(dataCosT) {
+		let urlCosT = 'http://localhost:5003/api_gateway/cossecante';
+		let resultToReturn;
+		await axios.post(urlCosT, { 'data': dataCosT }).then(responseCosT => resultToReturn = responseCosT.data.resultado);
+		return resultToReturn;
+	}
+
+	async function saveData() {
+		let operacao, dataOperacao = { 'soma': [], 'subtracao': [] }, num = '';
+		let result, resultSomaSubtracao
+		if (specialMode) {
+			if (xValue) {
+				let reqCos = await postCos(xValue);
+				let reqCosT = await postCosT(xValue);
+
+				result = await postSoma([reqCos, reqCosT]);
+			}
+			
+		} else {
+			conta.replaceAll(' ', '').split('').forEach(element => {
+				if (['+', '-'].includes(element)) {
+					operacao ? dataOperacao[operacao].push(Number(num)) : dataOperacao['soma'].push(Number(num));
+					operacao = element === '+' ? 'soma' : 'subtracao';
+					num = '';
+	
+				} else {
+					num += element;
+				}
+			});
+	
+			dataOperacao[operacao].push(Number(num));
+	
+			if (dataOperacao.soma.length > 0) result = await postSoma(dataOperacao.soma);
+			if (dataOperacao.subtracao.length > 0) resultSomaSubtracao = await postSoma(dataOperacao.subtracao);
+			
+			if (dataOperacao.subtracao.length > 0) result = await postSubtracao([result, resultSomaSubtracao]);
+		}
+		
+		cleanAllData();
+		setValueConta(result);
+	}
+</script>

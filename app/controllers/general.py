@@ -10,6 +10,7 @@ def index():
 def home():
     return render_template('home/home.html', title='Calculadora - Home')
 
+    
 @bp.route('/sobre')
 def sobre():
     return render_template('sobre/sobre.html', title='Calculadora - Sobre')
@@ -17,3 +18,7 @@ def sobre():
 @bp.route('/hist')
 def historico():
     return render_template('historico/historico.html', title='Calculadora - Histórico')
+
+@bp.route('/log')
+def log():
+    return render_template('log/log.html', title='Calculadora - Log')
